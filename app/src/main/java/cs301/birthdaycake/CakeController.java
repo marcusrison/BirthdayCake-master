@@ -45,6 +45,18 @@ public class CakeController implements View.OnClickListener, CompoundButton.OnCh
     }
 
     @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        int x = (int) motionEvent.getX();
+        int y = (int) motionEvent.getY();
+
+        cakeModel.giveCoord = true;
+        cakeModel.x = x;
+        cakeModel.y = y;
+        cakeview.invalidate();
+        return true;
+    }
+
+    @Override
     public boolean onTouch(View v, MotionEvent event) {
         float x = event.getX();
         float y = event.getY();
