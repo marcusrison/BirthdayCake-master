@@ -21,4 +21,9 @@ public class CakeModel {
         public float newX;
 
         public float newY;
+        public boolean isBalloon = false;
+
+        public float personBAddedX = 0.0f;
+
+        public float personBAddedY = 0.0f;
 }

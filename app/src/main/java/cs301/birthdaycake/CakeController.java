@@ -63,6 +63,11 @@ public class CakeController implements View.OnClickListener, CompoundButton.OnCh
         cakeModel.giveCoord = true;
         cakeModel.x = x;
         cakeModel.y = y;
+
+
+        cakeModel.personBAddedX = x;
+        cakeModel.personBAddedY = y;
+        cakeModel.isBalloon = true;
         cakeview.invalidate();
         return true;
     }
