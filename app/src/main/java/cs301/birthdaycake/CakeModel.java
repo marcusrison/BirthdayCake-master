@@ -10,5 +10,13 @@ public class CakeModel {
 
         public boolean hasCandles = true;
 
+        public boolean giveCoord = false;
+
+        public int x = 0;
+
+        public int y = 0;
+
+
+
 
 }
