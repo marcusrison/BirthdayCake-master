@@ -114,6 +114,7 @@ public class CakeView extends SurfaceView {
 
     }
 
+
     /**
      * onDraw is like "paint" in a regular Java program.  While a Canvas is
      * conceptually similar to a Graphics in javax.swing, the implementation has
@@ -146,27 +147,46 @@ public class CakeView extends SurfaceView {
         //Then a second cake layer
         canvas.drawRect(cakeLeft, top, cakeLeft + cakeWidth, bottom, cakePaint);
 
+        if(cakeModel.giveCoord==true)
+        {
+            String newX = String.valueOf(cakeModel.x);
+            String newY = String.valueOf(cakeModel.y);
+            Paint newColor = new Paint();
+            newColor.setTextSize(30.0f);
+            newColor.setColor(Color.RED);
+            canvas.drawText(newX+", "+newY,1800.0f,700.0f,newColor);
+
+            invalidate();
+        }
+
         if (cakeModel.numCandles == 1) {
             drawCandle(canvas, cakeLeft + cakeWidth/2 - candleWidth/2, cakeTop);
+            invalidate();
         } else if (cakeModel.numCandles == 2) {
             drawCandle(canvas, cakeLeft + cakeWidth/2 - candleWidth/2, cakeTop);
             drawCandle(canvas, cakeLeft + 2*cakeWidth/6 - candleWidth/2, cakeTop);
+            invalidate();
         } else if (cakeModel.numCandles == 3) {
             drawCandle(canvas, cakeLeft + cakeWidth/2 - candleWidth/2, cakeTop);
             drawCandle(canvas, cakeLeft + 2*cakeWidth/6 - candleWidth/2, cakeTop);
             drawCandle(canvas, cakeLeft + 4*cakeWidth/6 - candleWidth/2, cakeTop);
+            invalidate();
         } else if (cakeModel.numCandles == 4) {
             drawCandle(canvas, cakeLeft + cakeWidth/2 - candleWidth/2, cakeTop);
             drawCandle(canvas, cakeLeft + 2*cakeWidth/6 - candleWidth/2, cakeTop);
             drawCandle(canvas, cakeLeft + 4*cakeWidth/6 - candleWidth/2, cakeTop);
             drawCandle(canvas, cakeLeft + 1*cakeWidth/6 - candleWidth/2, cakeTop);
+            invalidate();
         } else if (cakeModel.numCandles == 5) {
             drawCandle(canvas, cakeLeft + cakeWidth/2 - candleWidth/2, cakeTop);
             drawCandle(canvas, cakeLeft + 2*cakeWidth/6 - candleWidth/2, cakeTop);
             drawCandle(canvas, cakeLeft + 4*cakeWidth/6 - candleWidth/2, cakeTop);
             drawCandle(canvas, cakeLeft + 1*cakeWidth/6 - candleWidth/2, cakeTop);
             drawCandle(canvas, cakeLeft + 5*cakeWidth/6 - candleWidth/2, cakeTop);
+            invalidate();
         }
+
+
 
         if (cakeModel.hasCheckerBoard) {
             drawCheckerBoard(canvas, cakeModel.newX, cakeModel.newY);
