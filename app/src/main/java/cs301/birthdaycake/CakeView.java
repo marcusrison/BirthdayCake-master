@@ -19,6 +19,8 @@ public class CakeView extends SurfaceView {
     Paint outerFlamePaint = new Paint();
     Paint innerFlamePaint = new Paint();
     Paint wickPaint = new Paint();
+    Paint greenCheckerBoardPaint = new Paint();
+    Paint redCheckerBoardPaint = new Paint();
 
     /* These constants define the dimensions of the cake.  While defining constants for things
         like this is good practice, we could be calculating these better by detecting
@@ -63,6 +65,10 @@ public class CakeView extends SurfaceView {
         innerFlamePaint.setStyle(Paint.Style.FILL);
         wickPaint.setColor(Color.BLACK);
         wickPaint.setStyle(Paint.Style.FILL);
+        greenCheckerBoardPaint.setColor(0xFF3EE785); //bright green
+        greenCheckerBoardPaint.setStyle(Paint.Style.FILL);
+        redCheckerBoardPaint.setColor(0xFFF50235); //red
+        redCheckerBoardPaint.setStyle(Paint.Style.FILL);
 
         setBackgroundColor(Color.WHITE);  //better than black default
 
@@ -97,6 +103,15 @@ public class CakeView extends SurfaceView {
             float wickTop = bottom - wickHeight - candleHeight;
             canvas.drawRect(wickLeft, wickTop, wickLeft + wickWidth, wickTop + wickHeight, wickPaint);
         }
+    }
+
+    public void drawCheckerBoard(Canvas canvas, float x, float y) {
+
+        canvas.drawRect(cakeModel.newX - 100.0f,  cakeModel.newY - 100.0f, cakeModel.newX, cakeModel.newY, greenCheckerBoardPaint);
+        canvas.drawRect(cakeModel.newX, cakeModel.newY - 100.0f, cakeModel.newX + 100.0f, cakeModel.newY, redCheckerBoardPaint);
+        canvas.drawRect(cakeModel.newX - 100.0f, cakeModel.newY, cakeModel.newX, cakeModel.newY + 100.0f, redCheckerBoardPaint);
+        canvas.drawRect(cakeModel.newX, cakeModel.newY, cakeModel.newX + 100.0f, cakeModel.newY + 100.0f, greenCheckerBoardPaint);
+
     }
 
     /**
@@ -151,6 +166,10 @@ public class CakeView extends SurfaceView {
             drawCandle(canvas, cakeLeft + 4*cakeWidth/6 - candleWidth/2, cakeTop);
             drawCandle(canvas, cakeLeft + 1*cakeWidth/6 - candleWidth/2, cakeTop);
             drawCandle(canvas, cakeLeft + 5*cakeWidth/6 - candleWidth/2, cakeTop);
+        }
+
+        if (cakeModel.hasCheckerBoard) {
+            drawCheckerBoard(canvas, cakeModel.newX, cakeModel.newY);
         }
 
     }//onDraw

@@ -10,5 +10,9 @@ public class CakeModel {
 
         public boolean hasCandles = true;
 
+        public boolean hasCheckerBoard = false;
 
+        public float newX;
+
+        public float newY;
 }
